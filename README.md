@@ -1,2 +1,2 @@
 # EventEaseProject
-Repository that will be used for develop in team the applicaction EventEase, a ticketing platform where evetns will be created and user will buy tickets for this events 
+Repository that will be used to develop EventEase, a ticketing platform that will manage events and ticket buyers for those events.
