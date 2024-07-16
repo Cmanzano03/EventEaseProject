@@ -1,15 +1,15 @@
 body {
- font-family: Verdana, Helvetica, sans-serif;
- font-size: 9pt;
- background: #FFF;
- color: #000;
+	font-family: Verdana, Helvetica, sans-serif;
+	font-size: 9pt;
+	background: #FFF;
+	color: #000;
 }
 
 h1 {
- font-size: 12pt;
- border-bottom: 1px solid silver;
- color: #009;
- text-align: center;
+	font-size: 12pt;
+	border-bottom: 1px solid silver;
+	color: #009;
+	text-align: center;
 }
 
 #menu {
@@ -32,7 +32,7 @@ h1 {
 
 #tabs li a {
 	text-decoration: none;
-}	
+}
 
 .clear {
 	clear: both;
@@ -69,13 +69,14 @@ h1 {
 
 /*
 look and feel da foglio di calcolo
-*/			
+*/
 table.formdata {
 	border: 1px solid #5F6F7E;
 	border-collapse: collapse;
 	margin: 10px;
 	width: 90%;
 }
+
 table.formdata th {
 	border: 1px solid #5F6F7E;
 	background-color: #E2E2E2;
@@ -87,6 +88,7 @@ table.formdata th {
 	font-style: italic;
 	font-size: smaller;
 }
+
 table.formdata td {
 	margin: 0;
 	padding: 0;
@@ -95,7 +97,9 @@ table.formdata td {
 	padding-left: 5px;
 	padding-right: 5px;
 }
-table.formdata input, textarea {
+
+table.formdata input,
+textarea {
 	color: black;
 	width: 100%;
 	height: 100%;
@@ -103,10 +107,14 @@ table.formdata input, textarea {
 	margin: 0;
 	border: 2px solid #ffffff;
 }
-.formdata input:focus, textarea:focus {
+
+.formdata input:focus,
+textarea:focus {
 	border: 2px solid #000000;
 }
-.formdata input:focus, textarea:focus {
+
+.formdata input:focus,
+textarea:focus {
 	border: 2px solid #000000;
 }
 
