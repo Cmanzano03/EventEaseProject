@@ -1,6 +1,6 @@
 package bean;
 
-
+//En duda de si hacerlo
 public class Cashier extends Profile {
 	private Event currentEvent;	
 

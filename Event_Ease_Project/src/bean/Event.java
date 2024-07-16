@@ -105,7 +105,7 @@ public class Event {
 	}
 
 	////////////////////////////////////////////////////////////
-	//// Ni idea de si esto va aqui o en el controller
+	//// Ni idea de si esto va aqui o en el service
 	////////////////////////////////////////////////////////////
 	public void addTicket(String ticketId, String info, String userId) {
 		if(NumberOfTickets > 0) {
