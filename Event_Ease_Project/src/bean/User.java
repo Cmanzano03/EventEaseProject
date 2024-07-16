@@ -22,9 +22,11 @@ public class User extends Profile {
 	public void addTicketHistory(Ticket ticket){
 		history.add(ticket);
 	}
+	
 	public Ticket getTicketHistory(int index) {
 		return history.get(index);
 	}
+	
 	public Ticket getTicketHistory(String id) throws notFoundElementException {
 		Ticket ticket = null;
 		for (int i = 0; i < history.size(); i++) {
@@ -35,9 +37,11 @@ public class User extends Profile {
 		}
 		throw new notFoundElementException("Ticket with id " + id + " not found");
 	}
+	
 	public void removeTicketHistory(int index) {
 		history.remove(index);
 	}
+	
 	public void removeTicketHistory(String id) throws notFoundElementException{
 		Iterator <Ticket> it = history.iterator();
 		boolean eliminado = false;
@@ -53,12 +57,15 @@ public class User extends Profile {
 			throw new notFoundElementException("The ticket with id " + id + " have not been found");
 		}
 	}
+	
 	public void addTicketCurrentEvents(Ticket ticket){
 		currentEvents.add(ticket);
 	}
+	
 	public Ticket getTicketCurrentEvents(int index) {
 		return currentEvents.get(index);
 	}
+	
 	public Ticket getTicketCurrentEvents(String id) throws notFoundElementException {
 		Ticket ticket = null;
 		for (int i = 0; i < currentEvents.size(); i++) {
@@ -69,9 +76,11 @@ public class User extends Profile {
 		}
 		throw new notFoundElementException("Ticket with id " + id + " not found");
 	}
+	
 	public void removeTicketCurrentEvents(int index) {
 		currentEvents.remove(index);
 	}
+	
 	public void removeTicketCurrentEvents(String id) throws notFoundElementException{
 		Iterator <Ticket> it = currentEvents.iterator();
 		boolean eliminado = false;
