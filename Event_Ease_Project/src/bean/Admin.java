@@ -3,6 +3,8 @@ package bean;
 import java.util.LinkedList;
 import java.util.List;
 
+import exceptions.notFoundElementException;
+
 public class Admin extends Staff {
 
 	private boolean validated = false;
@@ -25,14 +27,16 @@ public class Admin extends Staff {
 		listaManagers.remove(e);
 	}
 	
-//	public void RemoveCashier () {
-//		
-//	}
-//	
-//	public void AddCashier () {
-//		
-//	}
-	
+	public EventManager getEM(String id) throws notFoundElementException {
+		EventManager em= null;
+		for (int i = 0; i < listaManagers.size(); i++) {
+			em = listaManagers.get(i);
+			if(em.getId().equals(id)) {
+				return em;
+			}
+		}
+		throw new notFoundElementException("Event Manager with id " + id + " not found");
+	}
 	
 	////////////////////////////////////////////////////////////////////////////////////////////
 	///////////////////////////  CHECK WHO CALLS THESE FUNCTIONS ///////////////////////////////
@@ -64,5 +68,11 @@ public class Admin extends Staff {
 	public void setValidated(boolean validated) {
 		this.validated = validated;
 	}
-	
+//	public void RemoveCashier () {
+//	
+//}
+//
+//public void AddCashier () {
+//	
+//}
 }
