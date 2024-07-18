@@ -63,7 +63,7 @@ public class Broker extends HttpServlet {
             e.printStackTrace();
         }
     }
-
+    //Analyze which kind of user is trying to access the system and redirect him to his home page in case tha the login has been succesfull
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         
     	String action = request.getParameter("action");
@@ -107,6 +107,7 @@ public class Broker extends HttpServlet {
         return userCredentials.containsKey(username) && userCredentials.get(username).equals(password);
     }
 
+    //Add accounts into the data structures and write it into the files (Admin or user )
     private void createNewAccount(String username, String password, boolean isAdmin) {
         String credentialsFilePath = isAdmin ? "/path/to/admin.txt" : "/path/to/user.txt"; // Replace with your file paths
         try (FileWriter writer = new FileWriter(getServletContext().getRealPath(credentialsFilePath), true);

@@ -7,7 +7,6 @@ public class Ticket {
 	String userId;
 	
 	public Ticket(String ticketId, String info, String userId) {
-		super();
 		this.ticketId = ticketId;
 		this.info = info;
 		this.userId = userId;
