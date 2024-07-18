@@ -3,32 +3,37 @@ package bean;
 import java.time.LocalDateTime;
 import java.util.LinkedList;
 import java.util.List;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 public class Event {
 	private String name;
-	private String Description;
-	private String Category;
-	private String Address;
+	private int eventId;
+	private String description;
+	private String category;
+	private String address;
 	private LocalDateTime Date;
 	private int NumberOfTickets;
 	private String TermsAndConditions;
-	private double Price;
-	private String PromotionalCode;
+	private double price;
+	private String promotionalCode;
+	private String companyld;
+	@JsonIgnore
+	private List<Ticket> listaTickets;
 
-	List<Ticket> listaTickets;
-
-	public Event(String name, String description, String category, String address, LocalDateTime date,
-			int numberOfTickets, String termsAndConditions, double price, String promotionalCode) {
-		super();
+	public Event(String name, int eventId,  String description, String category, String adrdress, LocalDateTime date,
+			int numberOfTickets, String termsAndConditions, double price, String promotionalCode, String address) {
+		
 		this.name = name;
-		Description = description;
-		Category = category;
-		Address = address;
-		Date = date;
-		NumberOfTickets = numberOfTickets;
-		TermsAndConditions = termsAndConditions;
-		Price = price;
-		PromotionalCode = promotionalCode;
+		this.setEventId(eventId);
+		this.description = description;
+		this.category = category;
+		this.address = address;
+		this.Date = date;
+		this.NumberOfTickets = numberOfTickets;
+		this.TermsAndConditions = termsAndConditions;
+		this.price= price;
+		this.promotionalCode = promotionalCode;
 		this.listaTickets = new LinkedList<>();
 	}
 
@@ -41,27 +46,27 @@ public class Event {
 	}
 
 	public String getDescription() {
-		return Description;
+		return description;
 	}
 
 	public void setDescription(String description) {
-		Description = description;
+		this.description = description;
 	}
 
 	public String getCategory() {
-		return Category;
+		return category;
 	}
 
 	public void setCategory(String category) {
-		Category = category;
+		this.category = category;
 	}
 
 	public String getAddress() {
-		return Address;
+		return address;
 	}
 
-	public void setAddress(String address) {
-		Address = address;
+	public void setAddress(String adress) {
+		this.address = adress;
 	}
 
 	public LocalDateTime getDate() {
@@ -89,41 +94,48 @@ public class Event {
 	}
 
 	public double getPrice() {
-		return Price;
+		return price;
 	}
 
 	public void setPrice(double price) {
-		Price = price;
+		this.price= price;
 	}
 
 	public String getPromotionalCode() {
-		return PromotionalCode;
+		return promotionalCode;
 	}
 
 	public void setPromotionalCode(String promotionalCode) {
-		PromotionalCode = promotionalCode;
+		this.promotionalCode = promotionalCode;
+	}
+	
+	public String getCompanyld() {
+		return companyld;
+	}
+
+	public void setCompanyld(String companyld) {
+		this.companyld = companyld;
 	}
 
 	////////////////////////////////////////////////////////////
 	//// Ni idea de si esto va aqui o en el controller
 	////////////////////////////////////////////////////////////
 	public void addTicket(String ticketId, String info, String userId) {
-		if(NumberOfTickets > 0) {
+		if (NumberOfTickets > 0) {
 			NumberOfTickets--;
 			Ticket t = new Ticket(ticketId, info, userId);
 			listaTickets.add(t);
-		}
-		else {
+		} else {
 			System.out.println("Limit of tickets reached");
 		}
 	}
-	
+
 	public boolean checkTicket(String qr) {
 		// TODO Auto-generated method stub
 		boolean valid = false;
-		
+
 		for (int i = 0; i < listaTickets.size(); i++) {
-			if(listaTickets.get(i).getTicketId().equals(qr)) {
+			if (listaTickets.get(i).getTicketId().equals(qr)) {
 				valid = true;
 				listaTickets.get(i).setValidated(true);
 				listaTickets.remove(i);
@@ -132,5 +144,13 @@ public class Event {
 		}
 
 		return valid;
+	}
+
+	public int getEventId() {
+		return eventId;
+	}
+
+	public void setEventId(int eventId) {
+		this.eventId = eventId;
 	}
 }

@@ -9,6 +9,7 @@ public class Admin extends Staff {
 
 	private boolean validated = false;
 	
+	
 	private List <EventManager> listaManagers;
 	//private List <Cashier> listaCashiers;
 	private String Companyld;
