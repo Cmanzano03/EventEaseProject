@@ -8,7 +8,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 public class Event {
 	private String name;
-	private int eventId;
+	private String eventId;
 	private String description;
 	private String category;
 	private String address;
@@ -17,15 +17,15 @@ public class Event {
 	private String TermsAndConditions;
 	private double price;
 	private String promotionalCode;
-	private String companyld;
+	private String companyId;
 	@JsonIgnore
 	private List<Ticket> listaTickets;
 
-	public Event(String name, int eventId,  String description, String category, String adrdress, LocalDateTime date,
+	public Event(String name, String eventId,  String description, String category, String adrdress, LocalDateTime date,
 			int numberOfTickets, String termsAndConditions, double price, String promotionalCode, String address) {
 		
 		this.name = name;
-		this.setEventId(eventId);
+		this.eventId = eventId;
 		this.description = description;
 		this.category = category;
 		this.address = address;
@@ -110,47 +110,50 @@ public class Event {
 	}
 	
 	public String getCompanyld() {
-		return companyld;
+		return companyId;
 	}
 
 	public void setCompanyld(String companyld) {
-		this.companyld = companyld;
+		this.companyId= companyld;
+	}
+	public String getEventId() {
+		return eventId;
 	}
 
+	public void setEventId(String eventId) {
+		this.eventId = eventId;
+	}
+	
+	
+	
 	////////////////////////////////////////////////////////////
 	//// Ni idea de si esto va aqui o en el controller
 	////////////////////////////////////////////////////////////
 	public void addTicket(String ticketId, String info, String userId) {
 		if (NumberOfTickets > 0) {
 			NumberOfTickets--;
-			Ticket t = new Ticket(ticketId, info, userId);
+			Ticket t = new Ticket(ticketId, info, userId, eventId);
 			listaTickets.add(t);
 		} else {
 			System.out.println("Limit of tickets reached");
 		}
 	}
+//
+//	public boolean checkTicket(String qr) {
+//		// TODO Auto-generated method stub
+//		boolean valid = false;
+//
+//		for (int i = 0; i < listaTickets.size(); i++) {
+//			if (listaTickets.get(i).getTicketId().equals(qr)) {
+//				valid = true;
+//				listaTickets.get(i).setValidated(true);
+//				listaTickets.remove(i);
+//				break;
+//			}
+//		}
+//
+//		return valid;
+//	}
 
-	public boolean checkTicket(String qr) {
-		// TODO Auto-generated method stub
-		boolean valid = false;
 
-		for (int i = 0; i < listaTickets.size(); i++) {
-			if (listaTickets.get(i).getTicketId().equals(qr)) {
-				valid = true;
-				listaTickets.get(i).setValidated(true);
-				listaTickets.remove(i);
-				break;
-			}
-		}
-
-		return valid;
-	}
-
-	public int getEventId() {
-		return eventId;
-	}
-
-	public void setEventId(int eventId) {
-		this.eventId = eventId;
-	}
 }

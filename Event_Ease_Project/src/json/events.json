@@ -9,7 +9,7 @@
 		"NumberOfTickets" : 4000 ,
 		"TermsAndConditions" : "...." ,
 		"price" : 50.0 ,
-		"promotionalcode" : "YoungAndFree25", 
+		"promotionalCode" : "YoungAndFree25", 
 		"companyId" : 36789 
 	}
 ]

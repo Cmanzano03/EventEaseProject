@@ -1,53 +1,65 @@
 package Repositories;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
-import bean.User;
+import com.fasterxml.jackson.core.type.TypeReference;
 
-public class EventRepository extends  Repository {
+import bean.Event;
 
-	public EventRepository(String filePath) {
-		super(filePath);
+public class EventRepository extends  Repository<Event> {
+	   private final static  String filePath  = "src/json/events.json";
+
+
+	public EventRepository() {
+		super();
+	}
+
+	@Override
+	public List<Event> readFile() throws IOException {
+		File file = new File(filePath);
+        if (!file.exists()) {
+            return List.of();
+        }
+        return objectMapper.readValue(file, new TypeReference<List<Event>>() {});	
 		
 	}
 
 	@Override
-	public List<User> readFile() throws IOException {
+	public void writeFile(List<Event> events) throws IOException {
+		File file = new File(filePath);
+		objectMapper.writeValue(file, events );
+	}		
+	
+
+	@Override
+	public List<Event> findAll() throws IOException {
 		// TODO Auto-generated method stub
-		return null;
+		return readFile();
 	}
 
 	@Override
-	public void writeFile(List<User> users) throws IOException {
-		// TODO Auto-generated method stub
-		
+	public Optional<Event> findById( String id) throws IOException {
+		List<Event> events = readFile();
+		return events.stream().filter(e -> e.getEventId().equals(id)).findFirst();
+	}
+	@Override
+	public void save(Event event) throws IOException {
+		List<Event> events = readFile();
+		events.add(event);
+		writeFile(events);
 	}
 
 	@Override
-	public List<User> findAll() throws IOException {
-		// TODO Auto-generated method stub
-		return null;
+	public void deleteById(String id) throws IOException {
+		List<Event> events = readFile();
+		events.removeIf(e -> e.getEventId().equals(id));
+		writeFile(events);
 	}
 
-	@Override
-	public Optional<User> findById(String userId) throws IOException {
-		// TODO Auto-generated method stub
-		return Optional.empty();
-	}
-
-	@Override
-	public void save(User user) throws IOException {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void deleteById(String userId) throws IOException {
-		// TODO Auto-generated method stub
-		
-	}
+	
 
 	
 }

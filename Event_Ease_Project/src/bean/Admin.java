@@ -9,7 +9,7 @@ public class Admin extends Staff {
 
 	private boolean validated = false;
 	
-	
+	//Hace falta  ?
 	private List <EventManager> listaManagers;
 	//private List <Cashier> listaCashiers;
 	private String Companyld;
