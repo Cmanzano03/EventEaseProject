@@ -7,7 +7,9 @@ public class Ticket {
 	String userId;
 	private String eventId;
 
-	
+	public Ticket() {
+		
+	}
 	public Ticket(String ticketId, String info, String userId, String  eventId) {
 		this.ticketId = ticketId;
 		this.info = info;

@@ -6,6 +6,9 @@ public abstract class  Profile {
 	private String email; 
 	private int tlf_number;
 	
+	public Profile() {
+		
+	}
 	public Profile(String id, String password, String email, int tlf_number) {
 		this.id = id;
 		this.password  = password;

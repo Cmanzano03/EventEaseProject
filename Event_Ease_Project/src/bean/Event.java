@@ -20,7 +20,10 @@ public class Event {
 	private String companyId;
 	@JsonIgnore
 	private List<Ticket> listaTickets;
-
+	
+	public Event() {
+		
+	}
 	public Event(String name, String eventId,  String description, String category, String adrdress, LocalDateTime date,
 			int numberOfTickets, String termsAndConditions, double price, String promotionalCode, String address) {
 		
