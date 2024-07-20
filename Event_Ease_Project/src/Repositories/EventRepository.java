@@ -9,7 +9,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 
 import bean.Event;
 
-public class EventRepository extends  Repository<Event> {
+public class EventRepository extends  Repository<Event, Integer> {
 	   private final static  String filePath  = "src/json/events.json";
 
 
@@ -41,7 +41,7 @@ public class EventRepository extends  Repository<Event> {
 	}
 
 	@Override
-	public Optional<Event> findById( String id) throws IOException {
+	public Optional<Event> findById( Integer id) throws IOException {
 		List<Event> events = readFile();
 		return events.stream().filter(e -> e.getEventId().equals(id)).findFirst();
 	}
@@ -53,7 +53,7 @@ public class EventRepository extends  Repository<Event> {
 	}
 
 	@Override
-	public void deleteById(String id) throws IOException {
+	public void deleteById(Integer id) throws IOException {
 		List<Event> events = readFile();
 		events.removeIf(e -> e.getEventId().equals(id));
 		writeFile(events);

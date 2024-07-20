@@ -8,7 +8,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 public class Event {
 	private String name;
-	private String eventId;
+	private Integer eventId;
 	private String description;
 	private String category;
 	private String address;
@@ -17,14 +17,14 @@ public class Event {
 	private String TermsAndConditions;
 	private double price;
 	private String promotionalCode;
-	private String companyId;
+	private Integer companyId;
 	@JsonIgnore
 	private List<Ticket> listaTickets;
 	
 	public Event() {
 		
 	}
-	public Event(String name, String eventId,  String description, String category, String adrdress, LocalDateTime date,
+	public Event(String name, Integer  eventId,  String description, String category, String adrdress, LocalDateTime date,
 			int numberOfTickets, String termsAndConditions, double price, String promotionalCode, String address) {
 		
 		this.name = name;
@@ -112,35 +112,35 @@ public class Event {
 		this.promotionalCode = promotionalCode;
 	}
 	
-	public String getCompanyld() {
+	public Integer  getCompanyld() {
 		return companyId;
 	}
 
-	public void setCompanyld(String companyld) {
+	public void setCompanyld(Integer companyld) {
 		this.companyId= companyld;
 	}
-	public String getEventId() {
+	public Integer getEventId() {
 		return eventId;
 	}
 
-	public void setEventId(String eventId) {
+	public void setEventId(Integer eventId) {
 		this.eventId = eventId;
 	}
 	
 	
 	
-	////////////////////////////////////////////////////////////
-	//// Ni idea de si esto va aqui o en el controller
-	////////////////////////////////////////////////////////////
-	public void addTicket(String ticketId, String info, String userId) {
-		if (NumberOfTickets > 0) {
-			NumberOfTickets--;
-			Ticket t = new Ticket(ticketId, info, userId, eventId);
-			listaTickets.add(t);
-		} else {
-			System.out.println("Limit of tickets reached");
-		}
-	}
+//	////////////////////////////////////////////////////////////
+//	//// Ni idea de si esto va aqui o en el controller
+//	////////////////////////////////////////////////////////////
+//	public void addTicket(String ticketId, String info, String userId) {
+//		if (NumberOfTickets > 0) {
+//			NumberOfTickets--;
+//			Ticket t = new Ticket(ticketId, info, userId, eventId);
+//			listaTickets.add(t);
+//		} else {
+//			System.out.println("Limit of tickets reached");
+//		}
+//	}
 //
 //	public boolean checkTicket(String qr) {
 //		// TODO Auto-generated method stub

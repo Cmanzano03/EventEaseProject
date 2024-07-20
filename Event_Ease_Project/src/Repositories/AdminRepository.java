@@ -9,7 +9,7 @@ import java.util.Optional;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 
-public class AdminRepository extends Repository<Admin> {
+public class AdminRepository extends Repository<Admin, String> {
 	   private final static  String filePath  = "src/json/admin.json";
 
 	@Override

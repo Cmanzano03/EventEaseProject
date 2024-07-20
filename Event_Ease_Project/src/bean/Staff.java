@@ -8,7 +8,7 @@ import exceptions.notFoundElementException;
 public abstract class Staff extends Profile{
 	
 	private List<Event> listaEventos;
-	private List<Event> historicoEventos;
+	//private List<Event> historicoEventos;
 
 	
 	public Staff() {
@@ -17,7 +17,7 @@ public abstract class Staff extends Profile{
 	public Staff(String id, String password, String email, int tlf_number) {
 		super(id, password, email, tlf_number);
 		listaEventos = new LinkedList<Event>();
-		historicoEventos = new LinkedList<Event>();
+		//historicoEventos = new LinkedList<Event>();
 	}
 
 	public Event getEvent (int i){
@@ -33,22 +33,22 @@ public abstract class Staff extends Profile{
 		}
 		throw new notFoundElementException("Event  with id " + name+ " not found");
 	}
-	public Event getEventfromHistory(String name) throws notFoundElementException {
-		Event event= null;
-		for (int i = 0; i < historicoEventos.size(); i++) {
-			event = listaEventos.get(i);
-			if(event.getName().equals(name)) {
-				return event;
-			}
-		}
-		throw new notFoundElementException("Event  with id " + name+ " not found");
-	}
+//	public Event getEventfromHistory(String name) throws notFoundElementException {
+//		Event event= null;
+//		for (int i = 0; i < historicoEventos.size(); i++) {
+//			event = listaEventos.get(i);
+//			if(event.getName().equals(name)) {
+//				return event;
+//			}
+//		}
+//		throw new notFoundElementException("Event  with id " + name+ " not found");
+//	}
 	public void addEvent (Event e){
 		listaEventos.add(e);
 	}
-	public void addEventToHistory(Event e) {
-		historicoEventos.add(e);
-	}
+//	public void addEventToHistory(Event e) {
+//		historicoEventos.add(e);
+//	}
 	public void modifyEvent (Event e, Event newE){
 		int i = listaEventos.indexOf(e);
 		listaEventos.add(i, newE);
@@ -56,9 +56,9 @@ public abstract class Staff extends Profile{
 	public void deleteEvent (Event e){
 		listaEventos.remove(e);
 	}
-	public List<Event> viewHistory (){
-		return historicoEventos;
-	}
+//	public List<Event> viewHistory (){
+//		return historicoEventos;
+//	}
 	public List<Event> getListEvents (){
 		return listaEventos;
 	}

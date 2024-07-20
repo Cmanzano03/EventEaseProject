@@ -1,26 +1,26 @@
 package bean;
 
 public class Ticket {
-	String ticketId;
+	Integer ticketId;
 	String info;
 	boolean validated; 
 	String userId;
-	private String eventId;
+	private Integer  eventId;
 
 	public Ticket() {
 		
 	}
-	public Ticket(String ticketId, String info, String userId, String  eventId) {
+	public Ticket(int ticketId, String info, String userId, Integer  eventId) {
 		this.ticketId = ticketId;
 		this.info = info;
 		this.userId = userId;
 		this.validated = false;
 		this.eventId = eventId;
 	}
-	public String getTicketId() {
+	public int getTicketId() {
 		return ticketId;
 	}
-	public void setTicketId(String ticketId) {
+	public void setTicketId(int ticketId) {
 		this.ticketId = ticketId;
 	}
 	public String getInfo() {
@@ -41,10 +41,10 @@ public class Ticket {
 	public void setUserId(String userId) {
 		this.userId = userId;
 	}
-	public String  getEventId() {
+	public Integer  getEventId() {
 		return eventId;
 	}
-	public void setEventId(String eventId) {
+	public void setEventId(Integer eventId) {
 		this.eventId = eventId;
 	}
 	

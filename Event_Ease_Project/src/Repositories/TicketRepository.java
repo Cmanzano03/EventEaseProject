@@ -9,7 +9,7 @@ import java.util.Optional;
 import com.fasterxml.jackson.core.type.TypeReference;
 
 
-public class TicketRepository extends  Repository<Ticket> {
+public class TicketRepository extends  Repository<Ticket, Integer> {
 	   private final static  String filePath  = "src/json/tickets.json";
 
 	
@@ -41,16 +41,16 @@ public class TicketRepository extends  Repository<Ticket> {
 	}
 
 	@Override
-	public Optional<Ticket> findById(String id) throws IOException {
+	public Optional<Ticket> findById(Integer id) throws IOException {
 		List<Ticket> tickets = readFile();
-		return tickets.stream().filter(t -> t.getTicketId().equals(id)).findFirst();
+		return tickets.stream().filter(t -> t.getTicketId() == id).findFirst();
 	}
 
 
 	@Override
-	public void deleteById(String id) throws IOException {
+	public void deleteById(Integer id) throws IOException {
 		List<Ticket> tickets = readFile();
-		tickets.removeIf(t -> t.getTicketId().equals(id));
+		tickets.removeIf(t -> t.getTicketId() == id);
 		writeFile(tickets);
 		
 	}
@@ -60,6 +60,16 @@ public class TicketRepository extends  Repository<Ticket> {
         List<Ticket> tickets = readFile();
         tickets.add(ticket);
         writeFile(tickets);		
+	}
+	
+	public Optional<Ticket> getLastTicketCreated() throws IOException{
+		List<Ticket> tickets = readFile();
+		return  tickets.stream().max((t1,t2) -> Integer.compare(t1.getTicketId(), t2.getTicketId()));
+	}
+	
+	public boolean firstTicket() throws IOException {
+		List<Ticket> tickets = readFile();
+		return tickets.isEmpty();
 	}
 
 	

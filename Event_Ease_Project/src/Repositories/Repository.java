@@ -11,7 +11,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 //Have to be defined as a singleton , not done yet 
 
-public abstract class Repository<T> {
+public abstract class Repository<T, B> {
 	
 	protected   ObjectMapper objectMapper;
 	
@@ -23,8 +23,8 @@ public abstract class Repository<T> {
 	public abstract List<T> readFile() throws IOException;
 	public abstract  void writeFile(List<T> users) throws IOException;
 	public abstract List<T> findAll() throws IOException;
-	public abstract Optional<T> findById(String id) throws IOException;
+	public abstract Optional<T> findById(B id) throws IOException;
 	public abstract void save(T object) throws IOException;
-	public abstract void deleteById(String id) throws IOException;
+	public abstract void deleteById(B id) throws IOException;
 	
 }

@@ -1,28 +1,116 @@
 package bean;
 
+import java.io.IOException;
+import java.util.Optional;
+
+import Repositories.EventRepository;
+import Repositories.Repository;
+import Repositories.TicketRepository;
+import Repositories.UserRepository;
+import exceptions.notFoundElementException;
+
 public class SellTicketService {
-	//Repository eventRepository
-	//Repository ticketRepository
-	//Repository userRepository
+	Repository<Event, Integer> eventRepository;
+	Repository<Ticket, Integer> ticketRepository;
+	Repository<User, String> userRepository;
+	
+	
 	
 	public SellTicketService() {
+		eventRepository = new EventRepository();
+		ticketRepository = new TicketRepository();
+		userRepository = new UserRepository();
+	
+	}
+//  Pre : eventId is the id of the event which ticket wants to be buyed	
+//	Post: Returns the price which have the tickets of the event we are going to buy in case that the event exist in the DB
+//	if not it returns -1 
+	
+	public double  getTicketPrice(int eventId){
+		double price = -1;
+		Optional<Event> optionalEvent;
+		Event event;
+		try {
+			optionalEvent = eventRepository.findById(eventId);
+			if(optionalEvent.isPresent()) {
+				event = optionalEvent.get();
+				price = event.getPrice();
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return price;
+	}
+//	Desc: Create the ticket associated to an event and to a user  that 
+//	has been buyed an is added to the dataBase a new entry 
+	public synchronized void  createTicket(int eventId, String userId) throws IOException, notFoundElementException {
+		Optional<Event> optionalEvent;
+		Event event;
+		String  ticketInfo;
+		int ticketId;
+		Ticket ticket;
+		
+		ticketInfo = "";
+		ticketId = 0;
+		
+		//We need to get first the name of the event to generate the ticket info description
+		optionalEvent  = eventRepository.findById(eventId);
+		if(optionalEvent.isPresent()) {
+			event = optionalEvent.get();
+			ticketInfo = "Ticket of the event "+event.getName();
+			
+			//Now we have to generate the ticket Id
+			ticketId = generateTicketId();
+			if(ticketId != -1) { //Correct value
+				
+				if( ticketRepository.findById(ticketId).isEmpty()) { //We verify that any other ticket of the system has this id
+					//Now we can finally create the ticket and add it to the DB
+					ticket = new Ticket(ticketId, ticketInfo, userId, eventId);
+					ticketRepository.save(ticket);
+				}else {
+					System.out.println("Error: Another ticket exist with this id ");
+				}
+			}else {
+				System.out.println("Error at generateTicket");
+			}
+			
+		}else {
+			System.out.println("The event with id "+eventId+" do not exist in the dataBase");
+		}
+		
+		
+		
 		
 	}
-	//Post: Returns the price which have the tickets of the event we are going to buy 
-//	public double getTicketPrice(String eventName){
-//		double price;
-//		
-//		return price;
-//	}
-	//Post: Returns the id of the ticket created
-//	public String createTicket() {
-//		String ticketId;
-//		
-//		return ticketId;
-//	}
-	//Add the ticket created to the user data structures
-//	public void nominateTicketUser() {
-//		
-//	}
+  	//Method used to generate the ticket Id 
+	//Pre: Must be verifyed that is an unique identifier 
+	//Post: returns a integer that will be the primary key for tickets, -1 if an error has happened  
+	private synchronized int generateTicketId() {
+		Optional<Ticket> optionalTicket;
+		Ticket ticket;
+		int ticketId = -1;
+		
+		TicketRepository ticketRepo = (TicketRepository) ticketRepository;
+		try {
+			
+			if(ticketRepo.firstTicket()) { //If this is the first ticket that is going to be generated 
+				ticketId = 1;
+			}else {
+				optionalTicket = ticketRepo.getLastTicketCreated();
+				if(optionalTicket.isPresent()) { //Verify that the result is not a null object 
+					ticket = optionalTicket.get();
+					ticketId = ticket.getTicketId() + 1;
+				}else {
+					System.out.println("Error at getLastTicketCreated");
+				}
+				
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return ticketId;
+	} 
+
 
 }

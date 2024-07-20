@@ -12,7 +12,7 @@ import java.util.Optional;
 
 //Hacer como singleton 
 
-public class UserRepository extends Repository<User>{
+public class UserRepository extends Repository<User, String>{
    private final static  String filePath  = "src/json/users.json";
 	
     public UserRepository() {
