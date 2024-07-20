@@ -2,9 +2,7 @@ package servlet;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 import javax.servlet.ServletException;
@@ -21,10 +19,7 @@ import Repositories.Repository;
 import Repositories.TicketRepository;
 import bean.Event;
 import bean.RequestData;
-import bean.SellTicketService;
 import bean.Ticket;
-import bean.User;
-import exceptions.notFoundElementException;
 
 //Devolver al usuario: Tickets(todos) o Eventos(todos o por búsqueda)
 public class UserServlet  extends HttpServlet {
@@ -66,10 +61,7 @@ public class UserServlet  extends HttpServlet {
         
         // Convert JSON data to a String
         String jsonString = jsonBuilder.toString();
-        
-        // Create a Gson instance
-        Gson gson = new Gson();
-        
+                
         try {
             // Convert JSON String to RequestData object
             RequestData requestData = gson.fromJson(jsonString, RequestData.class);
@@ -86,7 +78,7 @@ public class UserServlet  extends HttpServlet {
                 resp.getWriter().write(gson.toJson(filteredEvents));
             }
             else if(requestData.getTipo().equals("ticket")) {
-            	List<Ticket> tickets = ticketRepository.findAll();
+            	List<Ticket> tickets = ((TicketRepository) ticketRepository).findAllEventsUser(user);
             	resp.setContentType("application/json");
                 resp.getWriter().write(gson.toJson(tickets));
             }

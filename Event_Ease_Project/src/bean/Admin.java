@@ -8,7 +8,7 @@ public class Admin extends Staff {
 	
 	//Hace falta  ?
 	//private List <Cashier> listaCashiers;
-	private String Companyld;
+	private int Companyld;
 	private String IBAN;
 	public Admin() {
 		
@@ -32,11 +32,11 @@ public class Admin extends Staff {
 		
 	}
 
-	public String getCompanyld() {
+	public int getCompanyld() {
 		return Companyld;
 	}
 
-	public void setCompanyld(String companyld) {
+	public void setCompanyld(int companyld) {
 		Companyld = companyld;
 	}
 
