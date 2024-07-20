@@ -89,6 +89,15 @@ public class Event {
 	public void setNumberOfTickets(int numberOfTickets) {
 		NumberOfTickets = numberOfTickets;
 	}
+	
+	public void decreMentTickets() {
+		this.NumberOfTickets--;
+		if (NumberOfTickets == 0) {
+			setSoldedOut(true);
+		}
+	}
+	
+
 
 	public String getTermsAndConditions() {
 		return TermsAndConditions;
