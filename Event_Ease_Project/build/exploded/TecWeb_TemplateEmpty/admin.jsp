@@ -38,8 +38,6 @@
 		<% 
 	}
 %>
-<form action="Admin" method="post">
-	<input type="submit" value="Azzera Tutto">
-</form>
+
 </body>
 </html>
