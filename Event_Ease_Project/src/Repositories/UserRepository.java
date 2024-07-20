@@ -2,7 +2,7 @@
 package Repositories;
 
 import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
+
 import bean.User;
 
 import java.io.File;
@@ -12,14 +12,13 @@ import java.util.Optional;
 
 //Hacer como singleton 
 
-public class UserRepository extends Repository{
-   
+public class UserRepository extends Repository<User, String>{
+   private final static  String filePath  = "src/json/users.json";
 	
-    public UserRepository(String filePath) {
-      super(filePath);
+    public UserRepository() {
+    	super();
     }
-
-    public List<User> readFile() throws IOException {
+    public  List<User> readFile() throws IOException {
         File file = new File(filePath);
         if (!file.exists()) {
             return List.of();
@@ -47,9 +46,9 @@ public class UserRepository extends Repository{
         writeFile(users);
     }
 
-    public void deleteById(String userId) throws IOException {
+    public void deleteById(String id) throws IOException {
         List<User> users = readFile();
-        users.removeIf(user -> user.getId().equals(userId));
+        users.removeIf(user -> user.getId().equals(id));
         writeFile(users);
     }
 }

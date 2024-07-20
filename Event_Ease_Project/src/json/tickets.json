@@ -1,0 +1,10 @@
+
+[
+    {
+        "ticketId": 17653,
+        "info": "Ticket of the event Nickie minajs concert", 
+        "validated": false, 
+        "userId" : "johnyDoe",
+        "eventId" : 23470
+    }
+]

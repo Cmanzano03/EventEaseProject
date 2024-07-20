@@ -1,0 +1,16 @@
+[
+	{
+     	"name" : "Nickie minajs Concert" ,
+     	"eventId" : 23470,
+	 	"description" : "Concert of hip hop music " ,
+	 	"category" : "Concert" ,
+		"address" : "Calle Puerta de Alcala 5 " ,
+		"Date" : "27/07/2025" ,
+		"NumberOfTickets" : 4000 ,
+		"TermsAndConditions" : "...." ,
+		"price" : 50.0 ,
+		"promotionalCode" : "YoungAndFree25", 
+		"companyId" : 36789,
+		"soldedOut" : false
+	}
+]
