@@ -73,12 +73,6 @@ public class SellTicketService {
 			System.out.println("Error at generateTicket");
 		}
 		
-		
-
-	{
-		System.out.println("The event with id " + eventId + " do not exist in the dataBase");
-	}
-
 	}
 
 	// Method used to generate the ticket Id
