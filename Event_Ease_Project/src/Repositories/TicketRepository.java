@@ -6,6 +6,8 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
+
 import com.fasterxml.jackson.core.type.TypeReference;
 
 
@@ -70,6 +72,13 @@ public class TicketRepository extends  Repository<Ticket, Integer> {
 	public boolean firstTicket() throws IOException {
 		List<Ticket> tickets = readFile();
 		return tickets.isEmpty();
+	}
+	
+	public List<Ticket> findAllEventsUser(String userId) throws IOException{
+		List<Ticket> tickets; 
+		tickets = readFile();
+		return tickets.stream().filter(t -> t.getUserId().equals(userId)).collect(Collectors.toList());
+		
 	}
 
 	

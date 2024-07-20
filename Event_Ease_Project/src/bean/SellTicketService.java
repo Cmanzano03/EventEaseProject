@@ -61,9 +61,11 @@ public class SellTicketService {
 				ticket = new Ticket(ticketId, ticketInfo, userId, eventId);
 				ticketRepository.save(ticket);
 				//We decrement the number of tickets left to be selled and write it in the db
+				event.decreMentTickets();
 				eventRepository.save(event);
 				
-				event.decreMentTickets();
+				
+				
 			}else {
 				System.out.println("Error: Another ticket exist with this id ");
 			}
