@@ -18,6 +18,7 @@ public class Event {
 	private double price;
 	private String promotionalCode;
 	private Integer companyId;
+	private boolean soldedOut;
 	@JsonIgnore
 	private List<Ticket> listaTickets;
 	
@@ -38,6 +39,7 @@ public class Event {
 		this.price= price;
 		this.promotionalCode = promotionalCode;
 		this.listaTickets = new LinkedList<>();
+		soldedOut = false;
 	}
 
 	public String getName() {
@@ -125,6 +127,12 @@ public class Event {
 
 	public void setEventId(Integer eventId) {
 		this.eventId = eventId;
+	}
+	public boolean isSoldedOut() {
+		return soldedOut;
+	}
+	public void setSoldedOut(boolean soldedOut) {
+		this.soldedOut = soldedOut;
 	}
 	
 	

@@ -10,6 +10,7 @@
 		"TermsAndConditions" : "...." ,
 		"price" : 50.0 ,
 		"promotionalCode" : "YoungAndFree25", 
-		"companyId" : 36789 
+		"companyId" : 36789,
+		"soldedOut" : false
 	}
 ]

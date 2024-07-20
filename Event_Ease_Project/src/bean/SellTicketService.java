@@ -3,44 +3,43 @@ package bean;
 import java.io.IOException;
 import java.util.Optional;
 
+
 import Repositories.EventRepository;
 import Repositories.Repository;
 import Repositories.TicketRepository;
-import Repositories.UserRepository;
 import exceptions.notFoundElementException;
 
 public class SellTicketService {
-	Repository<Event, Integer> eventRepository;
-	Repository<Ticket, Integer> ticketRepository;
-	Repository<User, String> userRepository;
+	private Repository<Event, Integer> eventRepository;
+	private Repository<Ticket, Integer> ticketRepository;
+	private Event event;
 	
 	
-	
-	public SellTicketService() {
+	public SellTicketService(int eventId) {
 		eventRepository = new EventRepository();
 		ticketRepository = new TicketRepository();
-		userRepository = new UserRepository();
-	
-	}
-//  Pre : eventId is the id of the event which ticket wants to be buyed	
-//	Post: Returns the price which have the tickets of the event we are going to buy in case that the event exist in the DB
-//	if not it returns -1 
-	
-	public double  getTicketPrice(int eventId){
-		double price = -1;
+		
 		Optional<Event> optionalEvent;
-		Event event;
 		try {
 			optionalEvent = eventRepository.findById(eventId);
-			if(optionalEvent.isPresent()) {
-				event = optionalEvent.get();
-				price = event.getPrice();
+			if(optionalEvent.isPresent()){
+				this.event = optionalEvent.get();
+			}else {
+				System.out.println("Error in the  constructor, the event doesn't exist ");
 			}
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return price;
+
+	}
+	
+//	Post: Returns the price which have the tickets of the event we are going to buy 
+	public double  getTicketPrice(){
+		return  this.event.getPrice();	
+	}
+//	Post: True if is no more  possible to buy a ticket, false if there are available tickets yet
+	public boolean isSoldedOut(){
+		return this.event.isSoldedOut();
 	}
 //	Desc: Create the ticket associated to an event and to a user  that 
 //	has been buyed an is added to the dataBase a new entry 

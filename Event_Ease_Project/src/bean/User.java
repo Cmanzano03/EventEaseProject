@@ -1,12 +1,5 @@
 package bean;
 
-import java.util.List;
-
-import exceptions.notFoundElementException;
-
-import java.util.ArrayList;
-import java.util.Iterator;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 public class User extends Profile {
