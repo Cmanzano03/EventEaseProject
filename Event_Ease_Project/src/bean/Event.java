@@ -122,26 +122,6 @@ public class Event {
 	public void setPromotionalCode(String promotionalCode) {
 		this.promotionalCode = promotionalCode;
 	}
-//<<<<<<< HEAD
-//		PromotionalCode = promotionalCode;
-//	}
-//
-//	////////////////////////////////////////////////////////////
-//	//// Ni idea de si esto va aqui o en el service
-//	////////////////////////////////////////////////////////////
-//	public void addTicket(String ticketId, String info, String userId) {
-//		if(NumberOfTickets > 0) {
-//			NumberOfTickets--;
-//			Ticket t = new Ticket(ticketId, info, userId);
-//			listaTickets.add(t);
-//		}
-//		else {
-//			System.out.println("Limit of tickets reached");
-//		}
-//=======
-//		this.promotionalCode = promotionalCode;
-//>>>>>>> branch 'main' of git@github.com:Cmanzano03/EventEaseProject.git
-//	}
 	
 	public Integer  getCompanyld() {
 		return companyId;
@@ -164,36 +144,5 @@ public class Event {
 		this.soldedOut = soldedOut;
 	}
 	
-	
-	
-//	////////////////////////////////////////////////////////////
-//	//// Ni idea de si esto va aqui o en el controller
-//	////////////////////////////////////////////////////////////
-//	public void addTicket(String ticketId, String info, String userId) {
-//		if (NumberOfTickets > 0) {
-//			NumberOfTickets--;
-//			Ticket t = new Ticket(ticketId, info, userId, eventId);
-//			listaTickets.add(t);
-//		} else {
-//			System.out.println("Limit of tickets reached");
-//		}
-//	}
-//
-//	public boolean checkTicket(String qr) {
-//		// TODO Auto-generated method stub
-//		boolean valid = false;
-//
-//		for (int i = 0; i < listaTickets.size(); i++) {
-//			if (listaTickets.get(i).getTicketId().equals(qr)) {
-//				valid = true;
-//				listaTickets.get(i).setValidated(true);
-//				listaTickets.remove(i);
-//				break;
-//			}
-//		}
-//
-//		return valid;
-//	}
-
 
 }
