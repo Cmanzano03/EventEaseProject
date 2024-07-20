@@ -4,6 +4,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
@@ -67,6 +69,7 @@ public class Broker extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         
     	String action = request.getParameter("action");
+    	HttpSession session = request.getSession(true);
 
         if ("login".equals(action)) {
             String username = request.getParameter("username");
@@ -76,12 +79,19 @@ public class Broker extends HttpServlet {
                 //////////////////////////////
                 // Handle admin actions here//
                 //////////////////////////////
+                session.setAttribute("username", username);
                 
+                String redirectPath = request.getContextPath() + "/web/scripts/EventEaseStaff/Staff.html";
+                response.sendRedirect(redirectPath);                
             } else if (isUser(username, password)) {
                 response.getWriter().println("User login successful");
                 /////////////////////////////
                 // Handle user actions here//
                 /////////////////////////////
+                session.setAttribute("username", username);
+                
+                String redirectPath = request.getContextPath() + "/web/scripts/EventEaseUser/User.html";
+                response.sendRedirect(redirectPath);
             } else {
                 response.getWriter().println("Invalid credentials");
             }
