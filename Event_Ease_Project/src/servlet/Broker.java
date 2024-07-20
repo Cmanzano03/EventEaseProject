@@ -79,7 +79,7 @@ public class Broker extends HttpServlet {
                 //////////////////////////////
                 // Handle admin actions here//
                 //////////////////////////////
-                session.setAttribute("username", username);
+                session.setAttribute("user", username);
                 
                 String redirectPath = request.getContextPath() + "/web/scripts/EventEaseStaff/Staff.html";
                 response.sendRedirect(redirectPath);                
@@ -88,7 +88,7 @@ public class Broker extends HttpServlet {
                 /////////////////////////////
                 // Handle user actions here//
                 /////////////////////////////
-                session.setAttribute("username", username);
+                session.setAttribute("user", username);
                 
                 String redirectPath = request.getContextPath() + "/web/scripts/EventEaseUser/User.html";
                 response.sendRedirect(redirectPath);

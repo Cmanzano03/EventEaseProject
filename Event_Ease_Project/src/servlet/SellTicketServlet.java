@@ -39,10 +39,10 @@ public class SellTicketServlet extends HttpServlet {
 		int eventId;
 		double ticketPrice;
 		HttpSession session;
-		User user;
+		String user;
 		
 		session = req.getSession();
-		user = (User)session.getAttribute("user");
+		user = (String)session.getAttribute("user");
 		eventId = Integer.parseInt(req.getParameter("eventId"));
 		
 		
@@ -55,7 +55,7 @@ public class SellTicketServlet extends HttpServlet {
 			
 			// Ahora creamos el ticket que ha sido comprado y lo añadimos a la estructura de datos, asociandolo al usuario y al evento, 
 			try {
-				sellTicketService.createTicket(eventId, user.getId());
+				sellTicketService.createTicket(eventId, user);
 			} catch (IOException e) {
 				e.printStackTrace();
 			} catch (notFoundElementException e) {
