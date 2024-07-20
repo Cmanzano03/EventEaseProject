@@ -119,27 +119,27 @@ public class Event {
 		return promotionalCode;
 	}
 
-	public void setPromotionalCode(String promotionalCode) {
-<<<<<<< HEAD
-		PromotionalCode = promotionalCode;
-	}
-
-	////////////////////////////////////////////////////////////
-	//// Ni idea de si esto va aqui o en el service
-	////////////////////////////////////////////////////////////
-	public void addTicket(String ticketId, String info, String userId) {
-		if(NumberOfTickets > 0) {
-			NumberOfTickets--;
-			Ticket t = new Ticket(ticketId, info, userId);
-			listaTickets.add(t);
-		}
-		else {
-			System.out.println("Limit of tickets reached");
-		}
-=======
-		this.promotionalCode = promotionalCode;
->>>>>>> branch 'main' of git@github.com:Cmanzano03/EventEaseProject.git
-	}
+//	public void setPromotionalCode(String promotionalCode) {
+//<<<<<<< HEAD
+//		PromotionalCode = promotionalCode;
+//	}
+//
+//	////////////////////////////////////////////////////////////
+//	//// Ni idea de si esto va aqui o en el service
+//	////////////////////////////////////////////////////////////
+//	public void addTicket(String ticketId, String info, String userId) {
+//		if(NumberOfTickets > 0) {
+//			NumberOfTickets--;
+//			Ticket t = new Ticket(ticketId, info, userId);
+//			listaTickets.add(t);
+//		}
+//		else {
+//			System.out.println("Limit of tickets reached");
+//		}
+//=======
+//		this.promotionalCode = promotionalCode;
+//>>>>>>> branch 'main' of git@github.com:Cmanzano03/EventEaseProject.git
+//	}
 	
 	public Integer  getCompanyld() {
 		return companyId;

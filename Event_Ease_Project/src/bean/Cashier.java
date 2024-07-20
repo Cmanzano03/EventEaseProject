@@ -11,9 +11,9 @@ public class Cashier extends Profile {
 	public boolean ReadQr (String qr) {
 		boolean valid = false;
 		
-		if(currentEvent.checkTicket(qr)) {
-			valid = true;
-		}
+//		if(currentEvent.checkTicket(qr)) {
+//			valid = true;
+//		}
 		
 		return valid;
 	}
