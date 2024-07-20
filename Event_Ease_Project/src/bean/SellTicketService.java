@@ -65,7 +65,7 @@ public class SellTicketService {
 				eventRepository.save(event);
 				
 				
-				
+			
 			}else {
 				System.out.println("Error: Another ticket exist with this id ");
 			}
