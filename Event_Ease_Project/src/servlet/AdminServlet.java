@@ -53,7 +53,7 @@ public class AdminServlet extends HttpServlet {
 			Admin admin;
 			if (a.isPresent()) {
 				admin = a.get();
-				List<Event> filteredEvents =  ((EventRepository) eventRepository).findAllEventsAdmin(admin.getCompanyld());
+				List<Event> filteredEvents =  ((EventRepository) eventRepository).findAllEventsAdmin(admin.getCompanyId());
 				
 				resp.setContentType("application/json");
 				resp.getWriter().write(gson.toJson(filteredEvents));

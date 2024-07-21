@@ -6,38 +6,36 @@ public class Admin extends Staff {
 
 	private boolean validated = false;
 	
-	//Hace falta  ?
-	//private List <Cashier> listaCashiers;
-	private int Companyld;
-	private String IBAN;
+	
+	private int companyId;
+	private String iban;
+	
 	public Admin() {
-		
+		super();
 	}
 	public Admin(String id, String password, String email, int tlf_number) {
 		super(id, password, email, tlf_number);
 	}
 
-	////////////////////////////////////////////////////////////////////////////////////////////
-	///////////////////////////  CHECK WHO CALLS THESE FUNCTIONS ///////////////////////////////
-	////////////////////////////////////////////////////////////////////////////////////////////
+	
 	public boolean BankTransfer (String to) {
 		return false;
 	}
 
 	public String getIBAN() {
-		return IBAN;
+		return iban;
 	}
 
-	public void setIBAN(String iBAN) {
+	public void setIBAN(String iban) {
 		
 	}
 
-	public int getCompanyld() {
-		return Companyld;
+	public int getCompanyId() {
+		return companyId;
 	}
 
-	public void setCompanyld(int companyld) {
-		Companyld = companyld;
+	public void setCompanyId(int CompanyId) {
+		this.companyId = CompanyId;
 	}
 
 	public boolean isValidated() {
@@ -47,11 +45,5 @@ public class Admin extends Staff {
 	public void setValidated(boolean validated) {
 		this.validated = validated;
 	}
-//	public void RemoveCashier () {
-//	
-//}
-//
-//public void AddCashier () {
-//	
-//}
+
 }

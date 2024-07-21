@@ -101,7 +101,7 @@ public class CreateEvent extends HttpServlet {
 				e.setAddress(requestData.getCity());
 				e.setDate(requestData.getDate());
 				e.setPrice(requestData.getMaxPrice());
-				e.setCompanyld(admin.getCompanyld());
+				e.setCompanyld(admin.getCompanyId());
 				
 				
 				

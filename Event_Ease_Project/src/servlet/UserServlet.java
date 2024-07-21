@@ -40,7 +40,7 @@ public class UserServlet  extends HttpServlet {
 
 	}
 	@Override
-	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		//Leer parametros de request/Json y de sesión 
 		HttpSession session;

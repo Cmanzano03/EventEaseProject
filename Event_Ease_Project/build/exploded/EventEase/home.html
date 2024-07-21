@@ -4,8 +4,8 @@
     <meta http-equiv="Pragma" content="no-cache"/>
     <meta http-equiv="Expires" content="-1"/>
     <title>Validazione di form sul browser</title>
-    <script type="text/javascript" src="../scripts/login.js"></script>
-    <link rel="stylesheet" href="../styles/default.css" type="text/css"/>
+    <script type="text/javascript" src="scripts/login.js"></script>
+    <link rel="stylesheet" href="styles/default.css" type="text/css"/>
 </head>
 <body>
     <h1>EventEase</h1>
@@ -15,8 +15,11 @@
             <tr>
                 <td>Profile type:</td>
                 <td>
-                    <input type="radio" id="user" name="profileType" value="user"> User
-                    <input type="radio" id="admin" name="profileType" value="admin"> CompanyAdmin
+                    <select name="profileType">
+                            <option value="">Select a profile type </option>
+                            <option value="user">User</option>
+                            <option value="admin">Admin</option>
+                   </select>
                 </td>
             </tr>
             <tr>
@@ -29,7 +32,7 @@
             </tr>
             <tr>
                 <td colspan="2" style="text-align: center;">
-                    <input type="button" id="submit" onclick="myFunction()">
+                    <button id="submit" onclick="myFunction()">Submit </button>
                 </td>
             </tr>
         </table>

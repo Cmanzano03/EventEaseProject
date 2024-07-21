@@ -12,7 +12,7 @@ import bean.Event;
 import bean.Ticket;
 
 public class EventRepository extends  Repository<Event, Integer> {
-	   private final static  String filePath  = "src/json/events.json";
+	   private final static  String filePath  = "C:\\Users\\carlo\\git\\repository\\Event_Ease_Project\\src\\json\\events.json";
 
 
 	public EventRepository() {

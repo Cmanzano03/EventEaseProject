@@ -10,7 +10,7 @@ import java.util.Optional;
 import com.fasterxml.jackson.core.type.TypeReference;
 
 public class AdminRepository extends Repository<Admin, String> {
-	   private final static  String filePath  = "src/json/admin.json";
+	   private final static  String filePath  = "C:\\Users\\carlo\\git\\repository\\Event_Ease_Project\\src\\json\\admin.json";
 
 	@Override
 	public List<Admin> readFile() throws IOException {

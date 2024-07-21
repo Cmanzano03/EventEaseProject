@@ -2,11 +2,11 @@
 [
     {
         "id": "luisillo98",
-        "name": "Luis Perez ",
+        "password": "4321",
         "email": "luis.perez@example.com",
         "tlf_number" : 65437963,
         "companyId" : 36789,
-        "IBAN" : 22567890764538763542
+        "iban" : "22567890764538763542"
          
     }
 ]
