@@ -51,9 +51,7 @@ public class Broker extends HttpServlet {
 			    session.setAttribute("id", id); //We set the attribute id 
 			    
 			    //Then we forward to the homePage of the admin 
-			    String forwardPath = "/web/scripts/EventEaseStaff/Staff.html";
-			    RequestDispatcher dispatcher = request.getRequestDispatcher(forwardPath);
-			    dispatcher.forward(request, response);             
+			    response.sendRedirect(request.getContextPath() + "/scripts/EventEaseStaff/Staff.html");              
         		}else {
             		PrintWriter out = response.getWriter();
     				out.println("<html>");
@@ -97,9 +95,8 @@ public class Broker extends HttpServlet {
 			    session.setAttribute("id", id); //We set the attribute id 
 			    
 			    //Then we forward to the homePage of the user 
-			    String forwardPath = "/web/scripts/EventEaseUser/User.html";
-			    RequestDispatcher dispatcher = request.getRequestDispatcher(forwardPath);
-			    dispatcher.forward(request, response);   
+			    String forwardPath = "/scripts/EventEaseUser/User.html";
+			    response.sendRedirect(request.getContextPath() + "/scripts/EventEaseUser/User.html");   
 			    
         		}else {
             		PrintWriter out = response.getWriter();

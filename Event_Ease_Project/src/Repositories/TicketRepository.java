@@ -12,7 +12,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 
 
 public class TicketRepository extends  Repository<Ticket, Integer> {
-	   private final static  String filePath  = "src/json/tickets.json";
+	   private final static  String filePath  = "C:\\Users\\carlo\\git\\repository\\Event_Ease_Project\\src\\json\\tickets.json";
 
 	
 	public TicketRepository() {
