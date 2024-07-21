@@ -1,8 +1,8 @@
 package bean;
 
-import java.util.Date;
-
 public class RequestData {
+
+	private String name;
 
 	private String tipo;
 	private String city;
@@ -43,5 +43,11 @@ public class RequestData {
 	}
 	public void setMaxPrice(Double maxPrice) {
 		this.maxPrice = maxPrice;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
 	}
 }

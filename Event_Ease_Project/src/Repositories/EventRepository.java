@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
 import com.fasterxml.jackson.core.type.TypeReference;
 
 import bean.Event;
+import bean.Ticket;
 
 public class EventRepository extends  Repository<Event, Integer> {
 	   private final static  String filePath  = "src/json/events.json";
@@ -69,7 +70,16 @@ public class EventRepository extends  Repository<Event, Integer> {
 		
 	}
 	
-
+	////////////////////////////////////////////////////////////////////////////////////
+	public Optional<Event> getLastEventCreated() throws IOException{
+		List<Event> events = readFile();
+		return  events.stream().max((t1,t2) -> Integer.compare(t1.getEventId(), t2.getEventId()));
+	}
+	
+	public boolean firstEvent() throws IOException {
+		List<Event> events = readFile();
+		return events.isEmpty();
+	}
 
 	
 

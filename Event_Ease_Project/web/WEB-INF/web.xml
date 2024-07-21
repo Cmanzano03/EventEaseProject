@@ -20,31 +20,50 @@
 	<servlet>
 		<servlet-name>Login</servlet-name>
 		<servlet-class>servlet.Broker</servlet-class>
-
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>Login</servlet-name>
 		<url-pattern>/Login</url-pattern>
 	</servlet-mapping>
 
+
 	<servlet>
 		<servlet-name>User</servlet-name>
 		<servlet-class>servlet.UserServlet</servlet-class>
-
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>User</servlet-name>
 		<url-pattern>/User</url-pattern>
 	</servlet-mapping>
 	
-		<servlet>
+	
+	<servlet>
 		<servlet-name>Admin</servlet-name>
 		<servlet-class>servlet.AdminServlet</servlet-class>
-
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>Admin</servlet-name>
 		<url-pattern>/Admin</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>CreateEvent</servlet-name>
+		<servlet-class>servlet.CreateEvent</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CreateEvent</servlet-name>
+		<url-pattern>/CreateEvent</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>SellTicket</servlet-name>
+		<servlet-class>servlet.SellTicketServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SellTicket</servlet-name>
+		<url-pattern>/SellTicket</url-pattern>
 	</servlet-mapping>
 	<!-- Welcome pages -->
 	<!-- pleonastico: tomcat "tenta" in automatico le index.html e index.jsp -->
