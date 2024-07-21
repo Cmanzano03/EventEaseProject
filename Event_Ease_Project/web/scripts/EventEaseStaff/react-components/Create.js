@@ -60,7 +60,7 @@ class Create extends React.Component {
             <div>
                 <button name="view"
                     style={{ backgroundColor: "red"}}
-                    onClick={(e) => this.props.onNavigate(e)}>Back </button><br></br>
+                    onClick={(e) => this.props.onNavigate(e)}>Back</button><br></br>
                 <form onSubmit={this.handleSubmit}>
                     <p style={{ color: "white", border: "solid black", backgroundColor: "#085394", fontSize: "30px" }}>Create the best events!</p>
                     <div>
