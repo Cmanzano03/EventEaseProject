@@ -13,6 +13,9 @@ class CurrentEvents extends React.Component {
             // Render the table if ticketList has elements
             return (
                 <div>
+                    <button name="home"
+                        style={{ backgroundColor: "red" }}
+                        onClick={(e) => this.props.onNavigate(e)}>Back</button><br></br>
                     <p style={{ color: "white", border: "solid black", backgroundColor: "#085394", fontSize: "30px" }}>
                         All your Tickets:
                     </p>
@@ -36,6 +39,9 @@ class CurrentEvents extends React.Component {
             // Render a message if ticketList is empty or not an array
             return (
                 <div>
+                    <button name="home"
+                        style={{ backgroundColor: "red" }}
+                        onClick={(e) => this.props.onNavigate(e)}>Back</button><br></br>
                     <p style={{ color: "white", border: "solid black", backgroundColor: "#085394", fontSize: "30px" }}>
                         All your Tickets:
                     </p>
