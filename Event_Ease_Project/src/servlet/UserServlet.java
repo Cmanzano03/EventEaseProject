@@ -2,7 +2,8 @@ package servlet;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -13,16 +14,20 @@ import javax.servlet.http.HttpSession;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 
+import Repositories.EventRepository;
+import Repositories.Repository;
+import Repositories.TicketRepository;
+import bean.Event;
 import bean.RequestData;
-import bean.SellTicketService;
-import bean.User;
-import exceptions.notFoundElementException;
+import bean.Ticket;
 
 //Devolver al usuario: Tickets(todos) o Eventos(todos o por búsqueda)
 public class UserServlet  extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 	private Gson gson;
+	private Repository<Event, Integer> eventRepository;
+	private Repository<Ticket, Integer> ticketRepository;
 	
 	@Override
 	public void init() throws ServletException {
@@ -30,6 +35,9 @@ public class UserServlet  extends HttpServlet {
 		super.init();
 		gson = new Gson();
 		//Inicializar atributos de sesion 
+		eventRepository = new EventRepository();
+		ticketRepository = new TicketRepository();
+
 	}
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -53,26 +61,27 @@ public class UserServlet  extends HttpServlet {
         
         // Convert JSON data to a String
         String jsonString = jsonBuilder.toString();
-        
-        // Create a Gson instance
-        Gson gson = new Gson();
-        
+                
         try {
             // Convert JSON String to RequestData object
             RequestData requestData = gson.fromJson(jsonString, RequestData.class);
             
             // Use requestData as needed
             if(requestData.getTipo().equals("evento")) {
-
+            	List<Event> filteredEvents = eventRepository.findAll().stream()
+                        .filter(e -> (requestData.getCity() == null || requestData.getCity().isEmpty() || e.getAddress().equalsIgnoreCase(requestData.getCity())))
+                        .filter(e -> (requestData.getDate() == null || requestData.getDate().isEmpty() || e.getDate().equals(requestData.getDate())))
+                        .filter(e -> (requestData.getMaxPrice() == 0 || e.getPrice() <= (requestData.getMaxPrice())))
+                        .collect(Collectors.toList());
+            	
+            	resp.setContentType("application/json");
+                resp.getWriter().write(gson.toJson(filteredEvents));
             }
             else if(requestData.getTipo().equals("ticket")) {
-            	
+            	List<Ticket> tickets = ((TicketRepository) ticketRepository).findAllEventsUser(user);
+            	resp.setContentType("application/json");
+                resp.getWriter().write(gson.toJson(tickets));
             }
-            
-
-            // Respond to the client
-            resp.setContentType("application/json");
-            resp.getWriter().write(gson.toJson(requestData));
         } catch (JsonSyntaxException e) {
             resp.sendError(HttpServletResponse.SC_BAD_REQUEST, "Invalid JSON format");
         }

@@ -1,6 +1,5 @@
 package bean;
 
-import java.time.LocalDateTime;
 import java.util.LinkedList;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -12,7 +11,7 @@ public class Event {
 	private String description;
 	private String category;
 	private String address;
-	private LocalDateTime Date;
+	private String Date;
 	private int NumberOfTickets;
 	private String TermsAndConditions;
 	private double price;
@@ -25,7 +24,7 @@ public class Event {
 	public Event() {
 		
 	}
-	public Event(String name, Integer  eventId,  String description, String category, String adrdress, LocalDateTime date,
+	public Event(String name, Integer  eventId,  String description, String category, String adrdress, String date,
 			int numberOfTickets, String termsAndConditions, double price, String promotionalCode, String address) {
 		
 		this.name = name;
@@ -74,11 +73,11 @@ public class Event {
 		this.address = adress;
 	}
 
-	public LocalDateTime getDate() {
+	public String getDate() {
 		return Date;
 	}
 
-	public void setDate(LocalDateTime date) {
+	public void setDate(String date) {
 		Date = date;
 	}
 
