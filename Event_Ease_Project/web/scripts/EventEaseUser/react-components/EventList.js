@@ -4,7 +4,7 @@ class EventList extends React.Component {
 
     llamadaAjax() {
 
-        fetch('Buy', {
+        fetch('/SellTicket', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

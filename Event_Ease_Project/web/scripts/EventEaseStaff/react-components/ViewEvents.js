@@ -27,14 +27,14 @@ class ViewEvents extends React.Component {
                                         {element}
                                     </td>
                                     <td>
-                                        <button onClick={this.handleAlert()}>Modify</button>
-                                        <button onClick={this.handleAlert()}>Delete</button>
+                                        <button onClick={this.handleAlert}>Modify</button>
+                                        <button onClick={this.handleAlert}>Delete</button>
                                     </td>
                                 </tr>
                             ))}
                         </tbody>
                     </table>
-                    <button onClick={this.handleAlert} 
+                    <button onClick={(e) => this.props.onNavigate(e)} 
                         style={{ backgroundColor: this.props.color, width: "100px", height: "50px", margin: "10px" }}>Create Event</button>
                 </div>
             );

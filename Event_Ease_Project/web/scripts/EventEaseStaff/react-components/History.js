@@ -20,7 +20,7 @@ class History extends React.Component {
                         {this.props.eventList.map((element) => (
                             <li style={{ border: '5px solid' }}>
                                 {element}
-                                <button onClick={this.handleAlert()}>View Report</button>
+                                <button onClick={this.handleAlert}>View Report</button>
                             </li>
                         ))}
                     </ul>

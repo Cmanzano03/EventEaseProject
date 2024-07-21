@@ -38,7 +38,7 @@ class Create extends React.Component {
             maxPrice: maxPrice
         };
 
-        fetch('/api/create', {  // Update URL to the correct endpoint
+        fetch('/CreateEvent', {  // Update URL to the correct endpoint
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

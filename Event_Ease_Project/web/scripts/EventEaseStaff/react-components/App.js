@@ -18,7 +18,7 @@ class App extends React.Component {
 
     llamadaAjax() {
 
-        fetch('Admin', {
+        fetch('/Admin', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
