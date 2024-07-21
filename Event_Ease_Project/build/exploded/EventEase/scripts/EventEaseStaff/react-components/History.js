@@ -9,18 +9,26 @@ class History extends React.Component {
     render() {
         if (!(Array.isArray(this.props.ticketList) && this.props.ticketList.length > 0)) {
             return (
-                <p style={{ color: "white", border: "solid black", backgroundColor: "#085394", fontSize: "30px" }}>No Events :(</p>
+                <div>
+                    <button name="home"
+                        style={{ backgroundColor: "red"}}
+                        onClick={(e) => this.props.onNavigate(e)}>Back</button><br></br>
+                    <p style={{ color: "white", border: "solid black", backgroundColor: "#085394", fontSize: "30px" }}>No Events :(</p>
+                </div>
             );
         }
         else {
             return (
                 <div >
+                    <button name="home"
+                        style={{ backgroundColor: "red"}}
+                        onClick={(e) => this.props.onNavigate(e)}>Back</button><br></br>
                     <p style={{ color: "white", border: "solid black", backgroundColor: "#085394", fontSize: "30px" }}>Past Events: </p>
                     <ul>
                         {this.props.eventList.map((element) => (
                             <li style={{ border: '5px solid' }}>
                                 {element}
-                                <button onClick={this.handleAlert}>View Report</button>
+                                <button onClick={this.handleAlert()}>View Report</button>
                             </li>
                         ))}
                     </ul>

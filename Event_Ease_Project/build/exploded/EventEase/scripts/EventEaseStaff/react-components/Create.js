@@ -38,28 +38,31 @@ class Create extends React.Component {
             maxPrice: maxPrice
         };
 
-        fetch('/CreateEvent', {  // Update URL to the correct endpoint
+        fetch('/api/create', {  // Update URL to the correct endpoint
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(requestData)
         })
-        .then(response => response.json())
-        .then(data => {
-            this.setState({ searchResults: data });
-            // console.log('Search results:', data);
-        })
-        .catch(error => {
-            console.error('There was an error making the request:', error);
-        });
+            .then(response => response.json())
+            .then(data => {
+                this.setState({ searchResults: data });
+                // console.log('Search results:', data);
+            })
+            .catch(error => {
+                console.error('There was an error making the request:', error);
+            });
     }
 
     render() {
         return (
             <div>
+                <button name="view"
+                    style={{ backgroundColor: "red"}}
+                    onClick={(e) => this.props.onNavigate(e)}>Back</button><br></br>
                 <form onSubmit={this.handleSubmit}>
-                    <p style={{color: "white", border: "solid black", backgroundColor: "#085394", fontSize: "30px"}}>Create the best events!</p>
+                    <p style={{ color: "white", border: "solid black", backgroundColor: "#085394", fontSize: "30px" }}>Create the best events!</p>
                     <div>
                         <input
                             type="text"
@@ -72,7 +75,7 @@ class Create extends React.Component {
                     </div>
                     <div>
                         <label>
-                            City <br/>
+                            City <br />
                             <select
                                 name="city"
                                 value={this.state.city}
@@ -88,7 +91,7 @@ class Create extends React.Component {
                     </div>
                     <div>
                         <label>
-                            Date <br/>
+                            Date <br />
                             <input
                                 type="date"
                                 name="date"
@@ -99,7 +102,7 @@ class Create extends React.Component {
                     </div>
                     <div>
                         <label>
-                            Price <br/>
+                            Price <br />
                             <input
                                 type="number"
                                 name="maxPrice"
@@ -110,13 +113,13 @@ class Create extends React.Component {
                     </div>
                     <div>
                         <label>
-                            Number of Tickets <br/>
+                            Number of Tickets <br />
                             <input
                                 type="number"
                                 name="numberOfTickets"  // Ensure this is handled if part of state
                                 value={this.state.numberOfTickets}
                                 onChange={this.handleChange}
-                            /> 
+                            />
                         </label>
                     </div>
                     <div>

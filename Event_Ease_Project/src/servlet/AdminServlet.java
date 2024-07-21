@@ -39,9 +39,13 @@ public class AdminServlet extends HttpServlet {
 	}
 
 	@Override
-	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		// Leer parametros de request/Json y de sesión
+		
+		System.out.println("Ha llegado un json ");
+		
+		
 		HttpSession session;
 		String user;
 

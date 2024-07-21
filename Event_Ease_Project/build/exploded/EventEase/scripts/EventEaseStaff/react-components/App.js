@@ -18,7 +18,7 @@ class App extends React.Component {
 
     llamadaAjax() {
 
-        fetch('/Admin', {
+        fetch('Admin', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -44,13 +44,13 @@ class App extends React.Component {
                 pageContent = <HomePage color="#6aa84f" onNavigate={this.onNavigate} />;
                 break;
             case "history":
-                pageContent = <History eventList={this.props.eventList} />;
+                pageContent = <History eventList={this.props.eventList} onNavigate={this.onNavigate}/>;
                 break;
             case "view":
                 pageContent = <ViewEvents eventList={this.props.eventList} onNavigate={this.onNavigate} />;
                 break;
             case "create":
-                pageContent = <Create />;
+                pageContent = <Create onNavigate={this.onNavigate}/>;
                 break;
             default:
                 pageContent = <HomePage color="#6aa84f" onNavigate={this.onNavigate} />;

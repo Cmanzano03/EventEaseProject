@@ -26,7 +26,7 @@ class App extends React.Component {
             maxPrice: ""
         };
 
-        fetch('/User', {
+        fetch('User', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -56,11 +56,11 @@ class App extends React.Component {
                 pageContent = <HomePage color="#6aa84f" onNavigate={this.onNavigate} eventList= {this.props.eventList}/>;
                 break;
             case "find":
-                pageContent = <FindEvent />;
+                pageContent = <FindEvent onNavigate={this.onNavigate}/>;
                 break;
             case "current":
                 this.llamadaAjax("ticket");
-                pageContent = <CurrentEvents ticketList= {this.props.ticketList}/>;
+                pageContent = <CurrentEvents ticketList= {this.props.ticketList} onNavigate={this.onNavigate}/>;
                 break;
             default:
                 this.llamadaAjax("evento");

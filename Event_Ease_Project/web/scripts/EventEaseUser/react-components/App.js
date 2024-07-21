@@ -26,7 +26,7 @@ class App extends React.Component {
             maxPrice: ""
         };
 
-        fetch('User', {
+        fetch('/User', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
