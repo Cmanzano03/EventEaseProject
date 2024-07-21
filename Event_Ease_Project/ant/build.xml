@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 
-<project name="TecWeb_TemplateEmpty" basedir=".." default="02.print.properties">
+<project name="EventEase" basedir=".." default="09a.deploy.war">
 
 	<!-- ================ -->
 	<!-- Properties setup -->
