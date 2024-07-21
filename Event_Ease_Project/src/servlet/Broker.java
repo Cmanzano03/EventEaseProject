@@ -1,5 +1,6 @@
 package servlet;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -13,8 +14,6 @@ import bean.Admin;
 import bean.User;
 
 import java.io.*;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Optional;
 
 public class Broker extends HttpServlet {
@@ -35,12 +34,10 @@ public class Broker extends HttpServlet {
         
     	String profileType = request.getParameter("profileType");
     	String id = request.getParameter("id");
-    	String password = request.getParameter("id");
-    	
+    	String password = request.getParameter("password");
     	
     	HttpSession session = request.getSession(true);
 
-      
         if (profileType.equals("admin")) {
         	Optional<Admin> optionalAdmin;
         	Admin admin;
@@ -53,9 +50,10 @@ public class Broker extends HttpServlet {
         		
 			    session.setAttribute("id", id); //We set the attribute id 
 			    
-			    //Then we redirect to the homePage of the admin 
-			    String redirectPath = request.getContextPath() + "/web/scripts/EventEaseStaff/Staff.html";
-			    response.sendRedirect(redirectPath);             
+			    //Then we forward to the homePage of the admin 
+			    String forwardPath = "/web/scripts/EventEaseStaff/Staff.html";
+			    RequestDispatcher dispatcher = request.getRequestDispatcher(forwardPath);
+			    dispatcher.forward(request, response);             
         		}else {
             		PrintWriter out = response.getWriter();
     				out.println("<html>");
@@ -98,9 +96,10 @@ public class Broker extends HttpServlet {
         		
 			    session.setAttribute("id", id); //We set the attribute id 
 			    
-			    //Then we redirect to the homePage of the user 
-			    String redirectPath = request.getContextPath() + "/web/scripts/EventEaseStaff/Staff.html";
-			    response.sendRedirect(redirectPath);   
+			    //Then we forward to the homePage of the user 
+			    String forwardPath = "/web/scripts/EventEaseUser/User.html";
+			    RequestDispatcher dispatcher = request.getRequestDispatcher(forwardPath);
+			    dispatcher.forward(request, response);   
 			    
         		}else {
             		PrintWriter out = response.getWriter();
@@ -130,17 +129,6 @@ public class Broker extends HttpServlet {
 				out.println("</body>");
 				out.println("</html>");
         	}
-        	
-        	
-        	/////////////////////////////
-            // Handle user actions here//
-            /////////////////////////////
-            session.setAttribute("id", id);
-            
-            String redirectPath = request.getContextPath() + "/web/scripts/EventEaseUser/User.html";
-            response.sendRedirect(redirectPath);
         }
-        
     }
-
 }
