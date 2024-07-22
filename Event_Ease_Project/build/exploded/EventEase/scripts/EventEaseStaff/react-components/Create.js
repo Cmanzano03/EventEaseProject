@@ -15,6 +15,10 @@ class Create extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
+    handleAlert = () => {
+        alert("Succesfully created :)");
+    };
+
     handleChange(event) {
         const { name, value } = event.target;
         this.setState({
@@ -38,17 +42,16 @@ class Create extends React.Component {
             maxPrice: maxPrice
         };
 
-        fetch('/api/create', {  // Update URL to the correct endpoint
+        fetch('http://localhost:8080/EventEase//CreateEvent', {  // Update URL to the correct endpoint
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(requestData)
         })
-            .then(response => response.json())
             .then(data => {
-                this.setState({ searchResults: data });
-                // console.log('Search results:', data);
+                console.log('Search results:', data);
+                this.handleAlert();
             })
             .catch(error => {
                 console.error('There was an error making the request:', error);

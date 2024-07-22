@@ -75,11 +75,13 @@ public class UserServlet  extends HttpServlet {
                         .collect(Collectors.toList());
             	
             	resp.setContentType("application/json");
+            	System.out.println(gson.toJson(filteredEvents));
                 resp.getWriter().write(gson.toJson(filteredEvents));
             }
             else if(requestData.getTipo().equals("ticket")) {
             	List<Ticket> tickets = ((TicketRepository) ticketRepository).findAllEventsUser(user);
             	resp.setContentType("application/json");
+            	System.out.println(gson.toJson(tickets));
                 resp.getWriter().write(gson.toJson(tickets));
             }
         } catch (JsonSyntaxException e) {

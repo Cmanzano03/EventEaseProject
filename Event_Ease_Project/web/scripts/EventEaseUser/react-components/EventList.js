@@ -4,7 +4,7 @@ class EventList extends React.Component {
 
     llamadaAjax() {
 
-        fetch('/SellTicketService', {
+        fetch('http://localhost:8080/EventEase/SellTicketService', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -22,16 +22,14 @@ class EventList extends React.Component {
     }
 
     render() {
-        const { eventList } = this.props;
-
         // Ensure eventList is an array and has items
-        if (Array.isArray(eventList) && eventList.length > 0) {
+        if (Array.isArray(this.props.eventList) && this.props.eventList.length > 0) {
             return (
                 <div>
                     <ul>
-                        {eventList.map((element, index) => (
-                            <li key={index} style={{ border: '5px solid' }}>
-                                {element}
+                        {this.props.eventList.map((element) => (
+                            <li  key={element.eventId} style={{ border: '5px solid' }}>
+                                {element.name}
                                 <button onClick={this.llamadaAjax()}>Buy</button>
                             </li>
                         ))}

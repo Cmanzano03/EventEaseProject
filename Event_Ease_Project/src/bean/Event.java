@@ -3,6 +3,7 @@ package bean;
 import java.util.LinkedList;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 
 public class Event {
@@ -10,34 +11,37 @@ public class Event {
 	private Integer eventId;
 	private String description;
 	private String category;
-	private String address;
-	private String Date;
-	private int NumberOfTickets;
-	private String TermsAndConditions;
+	@JsonProperty("city")
+	private String city;
+	@JsonProperty("date")
+	private String date;
+	@JsonProperty("numberOfTickets")
+	private int numberOfTickets;
+	@JsonProperty("termsAndConditions")
+	private String termsAndConditions;
 	private double price;
 	private String promotionalCode;
+	@JsonProperty("companyId")
 	private Integer companyId;
 	private boolean soldedOut;
-	@JsonIgnore
-	private List<Ticket> listaTickets;
+	
 	
 	public Event() {
 		
 	}
 	public Event(String name, Integer  eventId,  String description, String category, String adrdress, String date,
-			int numberOfTickets, String termsAndConditions, double price, String promotionalCode, String address) {
+			int numberOfTickets, String termsAndConditions, double price, String promotionalCode, String city) {
 		
 		this.name = name;
 		this.eventId = eventId;
 		this.description = description;
 		this.category = category;
-		this.address = address;
-		this.Date = date;
-		this.NumberOfTickets = numberOfTickets;
-		this.TermsAndConditions = termsAndConditions;
+		this.city = city;
+		this.date = date;
+		this.numberOfTickets = numberOfTickets;
+		this.termsAndConditions = termsAndConditions;
 		this.price= price;
 		this.promotionalCode = promotionalCode;
-		this.listaTickets = new LinkedList<>();
 		soldedOut = false;
 	}
 
@@ -66,32 +70,32 @@ public class Event {
 	}
 
 	public String getAddress() {
-		return address;
+		return city;
 	}
 
 	public void setAddress(String adress) {
-		this.address = adress;
+		this.city = adress;
 	}
 
 	public String getDate() {
-		return Date;
+		return date;
 	}
 
 	public void setDate(String date) {
-		Date = date;
+		this.date = date;
 	}
 
 	public int getNumberOfTickets() {
-		return NumberOfTickets;
+		return numberOfTickets;
 	}
 
 	public void setNumberOfTickets(int numberOfTickets) {
-		NumberOfTickets = numberOfTickets;
+		this.numberOfTickets = numberOfTickets;
 	}
 	
 	public void decreMentTickets() {
-		this.NumberOfTickets--;
-		if (NumberOfTickets == 0) {
+		this.numberOfTickets--;
+		if (numberOfTickets == 0) {
 			setSoldedOut(true);
 		}
 	}
@@ -99,11 +103,11 @@ public class Event {
 
 
 	public String getTermsAndConditions() {
-		return TermsAndConditions;
+		return termsAndConditions;
 	}
 
 	public void setTermsAndConditions(String termsAndConditions) {
-		TermsAndConditions = termsAndConditions;
+		this.termsAndConditions = termsAndConditions;
 	}
 
 	public double getPrice() {
@@ -122,11 +126,11 @@ public class Event {
 		this.promotionalCode = promotionalCode;
 	}
 	
-	public Integer  getCompanyld() {
+	public Integer  getCompanyId() {
 		return companyId;
 	}
 
-	public void setCompanyld(Integer companyld) {
+	public void setCompanyId(Integer companyld) {
 		this.companyId= companyld;
 	}
 	public Integer getEventId() {

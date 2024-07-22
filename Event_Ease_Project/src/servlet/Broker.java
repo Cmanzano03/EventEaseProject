@@ -32,6 +32,9 @@ public class Broker extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         
+		System.out.println("aconcaguina");
+		
+		
     	String profileType = request.getParameter("profileType");
     	String id = request.getParameter("id");
     	String password = request.getParameter("password");
@@ -48,7 +51,7 @@ public class Broker extends HttpServlet {
         		admin = optionalAdmin.get();
         		if(admin.getPassword().equals(password)) { //The credentials introduced are correct 
         		
-			    session.setAttribute("id", id); //We set the attribute id 
+			    session.setAttribute("user", id); //We set the attribute id 
 			    
 			    //Then we forward to the homePage of the admin 
 			    response.sendRedirect(request.getContextPath() + "/scripts/EventEaseStaff/Staff.html");              
@@ -92,7 +95,7 @@ public class Broker extends HttpServlet {
         		user = optionalUser.get();
         		if(user.getPassword().equals(password)) { //The credentials introduced are correct 
         		
-			    session.setAttribute("id", id); //We set the attribute id 
+			    session.setAttribute("user", id); //We set the attribute id 
 			    
 			    //Then we forward to the homePage of the user 
 			    String forwardPath = "/scripts/EventEaseUser/User.html";

@@ -43,7 +43,7 @@ public class AdminServlet extends HttpServlet {
 
 		// Leer parametros de request/Json y de sesión
 		
-		System.out.println("Ha llegado un json ");
+		//System.out.println("Ha llegado un json ");
 		
 		
 		HttpSession session;
@@ -58,9 +58,10 @@ public class AdminServlet extends HttpServlet {
 			if (a.isPresent()) {
 				admin = a.get();
 				List<Event> filteredEvents =  ((EventRepository) eventRepository).findAllEventsAdmin(admin.getCompanyId());
-				
+				//System.out.println(gson.toJson(filteredEvents));
 				resp.setContentType("application/json");
 				resp.getWriter().write(gson.toJson(filteredEvents));
+				
 			}
 
 		} catch (JsonSyntaxException e) {

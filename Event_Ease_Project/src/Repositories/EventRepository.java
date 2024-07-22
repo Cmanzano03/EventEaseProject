@@ -64,7 +64,7 @@ public class EventRepository extends  Repository<Event, Integer> {
 	public List<Event> findAllEventsAdmin(int companyId) throws IOException {
 		List <Event> events;
 		events = readFile();
-		return events.stream().filter(e -> e.getCompanyld().equals(companyId))
+		return events.stream().filter(e -> e.getCompanyId().equals(companyId))
 				.collect(Collectors.toList());
 		
 		

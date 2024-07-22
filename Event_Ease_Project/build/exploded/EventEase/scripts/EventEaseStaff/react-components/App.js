@@ -5,9 +5,10 @@ class App extends React.Component {
         super();
         this.state = {
             page: "home",
-            eventList: 0
+            eventList: []
         }
         this.onNavigate = this.onNavigate.bind(this);
+        this.llamadaAjax = this.llamadaAjax.bind(this);
     }
 
     onNavigate(e) {
@@ -17,40 +18,47 @@ class App extends React.Component {
     };
 
     llamadaAjax() {
-
-        fetch('Admin', {
+        fetch('http://localhost:8080/EventEase/Admin', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            //body: JSON.stringify(requestData)
             body: ""
         })
             .then(response => response.json())
             .then(data => {
                 this.setState({ eventList: data });
-                // console.log('Search results:', data);
+                console.log('Search results:', data);
             })
             .catch(error => {
                 console.error('There was an error making the request:', error);
             });
     }
 
+    componentDidMount() {
+        this.llamadaAjax();
+        this.intervalId = setInterval(this.llamadaAjax, 2000);
+    }
+
+    componentWillUnmount() {
+        clearInterval(this.intervalId);
+    }
+
     render() {
         let pageContent;
-        this.llamadaAjax();
+
         switch (this.state.page) {
             case "home":
                 pageContent = <HomePage color="#6aa84f" onNavigate={this.onNavigate} />;
                 break;
             case "history":
-                pageContent = <History eventList={this.props.eventList} onNavigate={this.onNavigate}/>;
+                pageContent = <History eventList={this.state.eventList} onNavigate={this.onNavigate} />;
                 break;
             case "view":
-                pageContent = <ViewEvents eventList={this.props.eventList} onNavigate={this.onNavigate} />;
+                pageContent = <ViewEvents eventList={this.state.eventList} onNavigate={this.onNavigate} />;
                 break;
             case "create":
-                pageContent = <Create onNavigate={this.onNavigate}/>;
+                pageContent = <Create onNavigate={this.onNavigate} />;
                 break;
             default:
                 pageContent = <HomePage color="#6aa84f" onNavigate={this.onNavigate} />;

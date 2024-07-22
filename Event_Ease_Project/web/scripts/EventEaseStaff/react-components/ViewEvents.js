@@ -7,7 +7,7 @@ class ViewEvents extends React.Component {
     };
 
     render() {
-        if (!(Array.isArray(this.props.ticketList) && this.props.ticketList.length > 0)) {
+        if (!(Array.isArray(this.props.eventList) && this.props.eventList.length > 0)) {
             return (
                 <div>
                     <button name="home"
@@ -26,23 +26,20 @@ class ViewEvents extends React.Component {
                         onClick={(e) => this.props.onNavigate(e)}>Back</button><br></br>
                     <p style={{ color: "white", border: "solid black", backgroundColor: "#085394", fontSize: "30px" }}>All your Events: </p>
                     <table>
-                        <tbody>
-                            {this.props.ticketList.map((element, index) => (
-                                <tr key={index} style={{ border: '5px solid' }}>
+                            {this.props.eventList.map((element) => (
+                                <tr style={{ border: '5px solid' }} key={element.eventId}>
                                     <td>
-                                        {element}
+                                        {element.name}
                                     </td>
                                     <td>
-                                        <button onClick={this.handleAlert()}>Modify</button>
-                                        <button onClick={this.handleAlert()}>Delete</button>
+                                        <button onClick={this.handleAlert}>Modify</button>
+                                        <button onClick={this.handleAlert}>Delete</button>
                                     </td>
                                 </tr>
                             ))}
-                        </tbody>
                     </table>
-                    <button onClick={this.handleAlert} 
-                        style={{ backgroundColor: this.props.color, width: "100px", height: "50px", margin: "10px" }}>Create Event</button>
-                </div>
+                    <button name= "create" onClick={(e) => this.props.onNavigate(e)} 
+                        style={{ backgroundColor: this.props.color, width: "100px", height: "50px", margin: "10px" }}>Create Event</button>                </div>
             );
         }
     }

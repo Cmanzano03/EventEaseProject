@@ -38,7 +38,7 @@ class FindEvent extends React.Component {
             maxPrice: maxPrice
         };
 
-        fetch('/User', {
+        fetch('http://localhost:8080/EventEase/User', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

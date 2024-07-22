@@ -1,16 +1,1 @@
-[
-	{
-     	"name" : "Nickie minajs Concert" ,
-     	"eventId" : 23470,
-	 	"description" : "Concert of hip hop music " ,
-	 	"category" : "Concert" ,
-		"address" : "" ,
-		"Date" : "27/07/2025" ,
-		"NumberOfTickets" : 4000 ,
-		"TermsAndConditions" : "...." ,
-		"price" : 50.0 ,
-		"promotionalCode" : "YoungAndFree25", 
-		"companyId" : 36789,
-		"soldedOut" : false
-	}
-]
+[{"name":"Nickie minajs Concert","eventId":23470,"description":"Concert of hip hop music ","category":"Concert","price":50.0,"promotionalCode":"YoungAndFree25","soldedOut":false,"address":"Madrid","city":"Madrid","date":"27/07/2025","numberOfTickets":4000,"termsAndConditions":"....","companyId":36789},{"name":"Kiko paja Concert","eventId":23471,"description":"Concert of kikian music ","category":"Concert","price":50.0,"promotionalCode":"YoungAndInprisoned25","soldedOut":false,"address":"Madrid","city":"Madrid","date":"27/07/2025","numberOfTickets":4000,"termsAndConditions":"....","companyId":36789},{"name":"concierto bruce wilis ","eventId":23472,"description":null,"category":null,"price":50.0,"promotionalCode":null,"soldedOut":false,"address":"Madrid","city":"Madrid","date":"2024-07-23","numberOfTickets":0,"termsAndConditions":null,"companyId":36789},{"name":"Concierto de un perro","eventId":23473,"description":null,"category":null,"price":2.0,"promotionalCode":null,"soldedOut":false,"address":"Madrid","city":"Madrid","date":"2024-07-05","numberOfTickets":0,"termsAndConditions":null,"companyId":36789},{"name":"Concierto de un perro","eventId":23474,"description":null,"category":null,"price":2.0,"promotionalCode":null,"soldedOut":false,"address":"Madrid","city":"Madrid","date":"","numberOfTickets":0,"termsAndConditions":null,"companyId":36789},{"name":"Carlos Manzano Izquierdo","eventId":23475,"description":null,"category":null,"price":1.0,"promotionalCode":null,"soldedOut":false,"address":"Madrid","city":"Madrid","date":"","numberOfTickets":0,"termsAndConditions":null,"companyId":36789}]
