@@ -7,7 +7,7 @@ class History extends React.Component {
     };
 
     render() {
-        if (!(Array.isArray(this.props.ticketList) && this.props.ticketList.length > 0)) {
+        if (!(Array.isArray(this.props.eventList) && this.props.eventList.length > 0)) {
             return (
                 <div>
                     <button name="home"
@@ -27,8 +27,8 @@ class History extends React.Component {
                     <ul>
                         {this.props.eventList.map((element) => (
                             <li style={{ border: '5px solid' }}>
-                                {element}
-                                <button onClick={this.handleAlert()}>View Report</button>
+                                {element.name}
+                                <button onClick={this.handleAlert}>View Report</button>
                             </li>
                         ))}
                     </ul>

@@ -24,7 +24,7 @@ class CurrentEvents extends React.Component {
                             {ticketList.map((element, index) => (
                                 <tr key={index} style={{ border: '5px solid' }}>
                                     <td>
-                                        {element}
+                                        {element.eventId}
                                     </td>
                                     <td>
                                         <button onClick={this.handleResaleClick}>Resale</button>
