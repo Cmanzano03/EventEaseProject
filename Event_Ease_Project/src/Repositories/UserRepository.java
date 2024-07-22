@@ -11,7 +11,6 @@ import java.nio.file.Paths;
 import java.util.List;
 import java.util.Optional;
 
-//Hacer como singleton 
 
 public class UserRepository extends Repository<User, String>{
    private final static  String filePath  = "C:\\Users\\carlo\\git\\repository\\Event_Ease_Project\\src\\json\\users.json";

@@ -62,6 +62,7 @@ public class SellTicketService {
 				ticketRepository.save(ticket);
 				//We decrement the number of tickets left to be selled and write it in the db
 				event.decreMentTickets();
+				eventRepository.deleteById(event.getEventId());
 				eventRepository.save(event);
 				
 				

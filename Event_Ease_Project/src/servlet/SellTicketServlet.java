@@ -1,5 +1,6 @@
 package servlet;
 
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.HashMap;
@@ -24,11 +25,13 @@ import javax.servlet.http.Cookie;
 public class SellTicketServlet extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
-	
+	private Gson gson;
+
 	@Override
 	public void init() throws ServletException {
 		// TODO Auto-generated method stub
 		super.init();
+		gson = new Gson();
 		
 		//Inicializar atributos de sesion 
 	}
@@ -43,7 +46,21 @@ public class SellTicketServlet extends HttpServlet {
 		
 		session = req.getSession();
 		user = (String)session.getAttribute("user");
-		eventId = Integer.parseInt(req.getParameter("eventId"));
+		
+		StringBuilder jsonBuilder = new StringBuilder();
+        try (BufferedReader reader = req.getReader()) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                jsonBuilder.append(line);
+            }
+        }
+        
+        // Convert JSON data to a String
+        String jsonString = jsonBuilder.toString();
+        RequestData requestData = gson.fromJson(jsonString, RequestData.class);
+
+		
+		eventId = requestData.getEventId();
 		
 		
 		//Crear objeto SellTicketService y llamar a sus metodos 

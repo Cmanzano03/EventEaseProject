@@ -4,6 +4,8 @@ public class RequestData {
 
 	private String name;
 
+	private int eventId;
+
 	private String tipo;
 	private String city;
 	private String date;
@@ -49,5 +51,11 @@ public class RequestData {
 	}
 	public void setName(String name) {
 		this.name = name;
+	}
+	public int getEventId() {
+		return eventId;
+	}
+	public void setEventId(int eventId) {
+		this.eventId = eventId;
 	}
 }

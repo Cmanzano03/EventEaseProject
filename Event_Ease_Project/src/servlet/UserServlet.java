@@ -48,7 +48,7 @@ public class UserServlet  extends HttpServlet {
 		
 		session = req.getSession();
 		user = (String)session.getAttribute("user");
-		
+		System.out.println(user);
 		
 		 // Read the JSON data from the request body
         StringBuilder jsonBuilder = new StringBuilder();
@@ -71,7 +71,8 @@ public class UserServlet  extends HttpServlet {
             	List<Event> filteredEvents = eventRepository.findAll().stream()
                         .filter(e -> (requestData.getCity() == null || requestData.getCity().isEmpty() || e.getAddress().equalsIgnoreCase(requestData.getCity())))
                         .filter(e -> (requestData.getDate() == null || requestData.getDate().isEmpty() || e.getDate().equals(requestData.getDate())))
-                        .filter(e -> (requestData.getMaxPrice() == 0 || e.getPrice() <= (requestData.getMaxPrice())))
+                        .filter(e -> (requestData.getMaxPrice() == 0. || e.getPrice() <= (requestData.getMaxPrice())))
+                        .filter(e -> (requestData.getName() == null || requestData.getName().isEmpty() || e.getName().equalsIgnoreCase(requestData.getName())))
                         .collect(Collectors.toList());
             	
             	resp.setContentType("application/json");

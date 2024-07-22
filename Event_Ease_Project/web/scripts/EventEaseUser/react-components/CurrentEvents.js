@@ -21,10 +21,10 @@ class CurrentEvents extends React.Component {
                     </p>
                     <table>
                         <tbody>
-                            {ticketList.map((element, index) => (
-                                <tr key={index} style={{ border: '5px solid' }}>
+                            {ticketList.map((element) => (
+                                <tr key={element.ticketId} style={{ border: '5px solid' }}>
                                     <td>
-                                        {element.eventId}
+                                        {element.info}
                                     </td>
                                     <td>
                                         <button onClick={this.handleResaleClick}>Resale</button>

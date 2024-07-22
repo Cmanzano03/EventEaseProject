@@ -29,7 +29,11 @@ class ViewEvents extends React.Component {
                             {this.props.eventList.map((element) => (
                                 <tr style={{ border: '5px solid' }} key={element.eventId}>
                                     <td>
-                                        {element.name}
+                                        {element.name}/
+                                        {element.city}/
+                                        {element.date}/                                    
+                                        {element.numberOfTickets}/
+                                        {element.price}
                                     </td>
                                     <td>
                                         <button onClick={this.handleAlert}>Modify</button>
